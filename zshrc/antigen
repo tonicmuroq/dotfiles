@@ -23,22 +23,13 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme denysdovhan/spaceship-prompt spaceship
 antigen apply
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
 alias ll='ls -alhF'
 alias grep='grep --color=auto'
 alias ack='ag --ignore-dir=static'
 
-alias rb='mycli --host=10.10.230.140 --port=3306 --user=root --password=52sxyMPpF8jh'
-alias fk='mycli --user mhw --password 7YFpjHcUSE2t --host 10.215.242.108 --port 3311'
-alias qn1='ssh root@47.93.217.197'
-alias qn2='ssh root@101.200.42.245'
-alias aliyun1='ssh root@47.93.186.39'
-
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 export GOPATH="$HOME/workspace/stupidgo"
 export PATH="$PATH:$GOPATH/bin"
-
 export CARGOPATH="$HOME/.cargo"
 export PATH="$PATH:$CARGOPATH/bin"
 
