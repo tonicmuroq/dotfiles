@@ -42,7 +42,8 @@ Bundle 'fatih/vim-go'
 Bundle 'vim-scripts/pythoncomplete'
 " Bundle 'Valloric/YouCompleteMe'
 " 决定不用solarized的配色了...
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
+Bundle 'joshdick/onedark.vim'
 
 " file type bundles
 Bundle 'sophacles/vim-bundle-mako'
@@ -115,7 +116,7 @@ endfunction
 
 " display style
 " colorscheme torte
-colorscheme solarized
+colorscheme onedark
 
 filetype plugin on
 filetype indent on

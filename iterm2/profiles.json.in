@@ -1,0 +1,5 @@
+{
+  "Profiles": [
+    include(`default.json.in')
+  ]
+}
