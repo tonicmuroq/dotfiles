@@ -1,0 +1,7 @@
+Host c1-inf-7
+User tonic
+Port 2022
+
+Host bitbucket.org github.com
+User tonicbupt
+ProxyCommand nc -X 5 -x 127.0.0.1:8889 %h %p
