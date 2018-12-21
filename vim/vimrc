@@ -11,6 +11,8 @@ set incsearch
 set hlsearch
 set laststatus=2
 set backspace=2
+set nobackup
+set noswapfile
 
 " initialize vundle
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
@@ -18,6 +20,9 @@ if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
 endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+" theme bundles
+" Bundle 'ctjhoa/spacevim'
 
 " feature bundles
 Bundle 'pyflakes'
@@ -32,24 +37,26 @@ Bundle 'mattn/emmet-vim'
 Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'Blackrush/vim-gocode'
+Bundle 'fatih/vim-go'
 " Bundle 'davidhalter/jedi-vim'
 Bundle 'vim-scripts/pythoncomplete'
-" Bundle 'AutoComplPop'
 " Bundle 'Valloric/YouCompleteMe'
 " 决定不用solarized的配色了...
-" Bundle 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized'
 
 " file type bundles
 Bundle 'sophacles/vim-bundle-mako'
 Bundle 'Glench/Vim-Jinja2-Syntax'
-Bundle 'othree/html5.vim'
-Bundle 'sprsquish/thrift.vim'
-Bundle 'tonyseek/rust.vim'
+Bundle 'solarnz/thrift.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'jansenm/vim-cmake'
-Bundle 'evanmiller/nginx-vim-syntax'
-" Bundle 'jnwhiteh/vim-golang'
+Bundle 'rhowardiv/nginx-vim-syntax'
+" Bundle 'pangloss/vim-javascript'
+" Bundle 'posva/vim-vue'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'othree/yajs.vim'
+Bundle 'othree/html5.vim'
 
 " key mapping
 " let mapleader=","
@@ -69,23 +76,36 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 autocmd FileType python map <Leader>pf :call Pyflakes()<CR>
-autocmd FileType html set filetype=mako softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType jinja set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType html set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType mako set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType go set expandtab!
+
+autocmd FileType javascript vnoremap <buffer> <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+autocmd BufEnter * :syntax sync fromstart
+au BufRead,BufNewFile *.vue set ft=html
 
 " configurations of plugins
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:ctrlp_custom_ignore = 'node_modules\|pyc\|git\|__pycache__'
-let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 0
-let g:jedi#popup_select_first = 0
+let g:jedi#popup_select_first = 1
 let g:jedi#popup_on_dot = 1
 " let g:jinja_syntax_html = 1
+" 给golang的补全
+" let g:acp_behaviorKeywordCommand = \"\<C-x>\<C-o>"
+let g:used_javascript_libs = 'vue,jquery,react'
+
+let g:tagbar_ctags_bin='/usr/bin/ctags'
 if filereadable('/usr/local/bin/ctags')
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 endif
+
 function! FiletypeHook(config)
     if has_key(a:config, 'language')
         let &filetype = a:config['language']
@@ -94,7 +114,8 @@ function! FiletypeHook(config)
 endfunction
 
 " display style
-colorscheme torte
+" colorscheme torte
+colorscheme solarized
 
 filetype plugin on
 filetype indent on
