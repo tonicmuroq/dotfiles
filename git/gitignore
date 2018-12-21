@@ -1,0 +1,15 @@
+*.swp
+*.pyc
+*.pyo
+*.pyx
+*.db
+local_config.*
+build/
+dist/
+*.egg-info/
+__pycache__/
+venv
+.python-version
+.envrc
+.qiniu_pythonsdk_hostscache.json
+.pytest_cache
