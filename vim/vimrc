@@ -53,6 +53,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'jansenm/vim-cmake'
 Bundle 'rhowardiv/nginx-vim-syntax'
+Bundle 'nathangrigg/vim-beancount'
 " Bundle 'pangloss/vim-javascript'
 " Bundle 'posva/vim-vue'
 Bundle 'othree/javascript-libraries-syntax.vim'
@@ -77,6 +78,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 autocmd FileType python map <Leader>pf :call Pyflakes()<CR>
+autocmd FileType go map <Leader>g :GoDef<CR>
 autocmd FileType jinja set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType html set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType mako set softtabstop=2 tabstop=2 shiftwidth=2
@@ -92,6 +94,7 @@ au BufRead,BufNewFile *.vue set ft=html
 " configurations of plugins
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_open_on_gui_startup = 0
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']
 let g:ctrlp_custom_ignore = 'node_modules\|pyc\|git\|__pycache__'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 0

@@ -12,7 +12,6 @@ antigen bundle docker
 antigen bundle fzf
 antigen bundle git
 antigen bundle golang
-antigen bundle httpie
 antigen bundle pip
 antigen bundle pyenv
 antigen bundle python
@@ -23,19 +22,21 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme denysdovhan/spaceship-prompt spaceship
 antigen apply
 
-alias ll='ls -alhF'
-alias grep='grep --color=auto'
-alias ack='ag --ignore-dir=static'
+source "/Users/tonic/.alias.zsh"
 
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
-export GOPATH="$HOME/workspace/stupidgo"
+export PATH="$PATH:/usr/local/opt/go/libexec/bin:/usr/local/sbin"
+export GOPATH="$HOME/.go"
+export GOPROXY="https://goproxy.cn"
+export GOPRIVATE="git.garena.com"
 export PATH="$PATH:$GOPATH/bin"
 export CARGOPATH="$HOME/.cargo"
-export PATH="$PATH:$CARGOPATH/bin"
+export PATH="$PATH:$CARGOPATH/bin:"
 
 function httproxy {
     export https_proxy=http://127.0.0.1:8888;
+    export HTTPS_PROXY=http://127.0.0.1:8888;
     export http_proxy=http://127.0.0.1:8888;
+    export HTTP_PROXY=http://127.0.0.1:8888;
     export all_proxy=socks5://127.0.0.1:8889;
 }
 
