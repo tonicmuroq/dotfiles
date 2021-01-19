@@ -60,6 +60,7 @@ set cursorline
 set laststatus=2
 set backspace=2
 set termguicolors
+set signcolumn=yes
 
 " key mapping
 imap jk <ESC>
