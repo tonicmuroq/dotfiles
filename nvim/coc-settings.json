@@ -12,5 +12,6 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  }
+  },
+  "python.pythonPath": "/Users/tonic/.pyenv/shims/python"
 }
