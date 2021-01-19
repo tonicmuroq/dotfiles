@@ -1,0 +1,16 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "go", "rust"],
+  "rust-analyzer.inlayHints.chainingHints": false,
+  "clangd.path": "/usr/local/opt/llvm/bin/clangd",
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck",
+    "go": "golangci-lint"
+  },
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+}
