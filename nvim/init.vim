@@ -61,6 +61,7 @@ set laststatus=2
 set backspace=2
 set termguicolors
 set signcolumn=yes
+set updatecount=0
 
 " key mapping
 imap jk <ESC>
