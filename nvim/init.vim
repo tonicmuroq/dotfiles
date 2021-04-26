@@ -25,6 +25,9 @@ Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
 
+" go mod syntax highlight
+Plug 'maralla/gomod.vim'
+
 " themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
