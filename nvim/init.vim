@@ -108,6 +108,7 @@ com! -nargs=0 OR         :call CocAction('runCommand', 'editor.action.organizeIm
 
 " automatic commands
 autocmd SwapExists * let v:swapchoice = "o"
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " global options
 let g:airline_powerline_fonts = 1
