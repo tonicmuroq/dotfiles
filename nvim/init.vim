@@ -24,14 +24,19 @@ Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
+Plug 'github/copilot.vim'
 
-" go mod syntax highlight
+" syntax highlight
 Plug 'maralla/gomod.vim'
+Plug 'uarun/vim-protobuf'
+Plug 'posva/vim-vue'
+Plug 'sophacles/vim-bundle-mako'
 
 " themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 call plug#end()
 
@@ -122,3 +127,14 @@ endif
 
 " display style
 colorscheme onedark
+
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
