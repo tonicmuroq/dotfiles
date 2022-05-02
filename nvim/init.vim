@@ -35,8 +35,17 @@ Plug 'sophacles/vim-bundle-mako'
 " themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'joshdick/onedark.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+" colorscheme
+Plug 'sainnhe/everforest'
+Plug 'joshdick/onedark.vim'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'sainnhe/sonokai'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'tyrannicaltoucan/vim-deep-space'
 
 call plug#end()
 
@@ -117,7 +126,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " global options
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onedark'
 let g:NERDTreeIgnore = ['\.py[oc]$', '__pycache__', '\.egg-info']
 let g:NERDTreeStatusline = "NERDTree"
 let g:tagbar_ctags_bin='/usr/bin/ctags'
@@ -126,7 +134,9 @@ if filereadable('/usr/local/bin/ctags')
 endif
 
 " display style
-colorscheme onedark
+set background=dark
+colorscheme deep-space
+let g:airline_theme = 'onedark'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
