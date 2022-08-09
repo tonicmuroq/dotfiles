@@ -3,7 +3,7 @@ local lint = require("lint")
 lint.linters_by_ft = {
   c = { "clangtidy" },
   go = { "golangcilint" },
-  python = { "flake8" },
+  -- python = { "flake8" },
 }
 
 lint.linters.codespell.args = {

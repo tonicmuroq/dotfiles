@@ -34,6 +34,9 @@ packer.startup({
     use("maralla/gomod.vim")
     use("modocache/move.vim")
 
+    -- copilot
+    use("github/copilot.vim")
+
     -- colorscheme
     use("tyrannicaltoucan/vim-deep-space")
 
@@ -92,7 +95,7 @@ packer.startup({
 require("plugins.dressing")
 require("plugins.colorscheme")
 require("plugins.autopairs")
--- require("plugins.treesitter")
+require("plugins.treesitter")
 require("plugins.fidget")
 require("plugins.formatter")
 require("plugins.nvim_lint")
