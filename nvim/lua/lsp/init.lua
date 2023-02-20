@@ -12,7 +12,7 @@ local servers = {
   "pyright",
   "rnix",
   "rust_analyzer",
-  "sumneko_lua",
+  "lua_ls",
   "taplo",
   "tsserver",
   "yamlls",
