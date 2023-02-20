@@ -3,6 +3,9 @@ return {
     python = {
       analysis = {
         typeCheckingMode = 'off',
+        diagnosticSeverityOverrides = {
+          reportUnusedFunction = 'off',
+        },
       },
     },
   },

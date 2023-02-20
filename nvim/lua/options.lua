@@ -3,7 +3,7 @@ local options = {
   swapfile = false,
   backup = false,
   writebackup = false, -- if a file is being edited by another program, it is not allowed to be edited
-  undofile = true, -- enable persistent undo
+  -- undofile = true, -- enable persistent undo
   updatetime = 300, -- faster completion (4000ms default)
 
   background = 'dark',
@@ -14,6 +14,7 @@ local options = {
   hlsearch = true,
   incsearch = true,
   smartcase = true,
+  mouse = '', -- disable stupid mouse
 
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   pumheight = 10, -- pop up menu height

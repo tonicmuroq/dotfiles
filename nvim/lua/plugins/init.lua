@@ -81,6 +81,8 @@ packer.startup({
     -- test runner
     use("vim-test/vim-test")
 
+    use("nathom/filetype.nvim")
+
     if PACKER_BOOTSTRAP then
       require("packer").sync()
     end

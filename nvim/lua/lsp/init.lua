@@ -16,6 +16,7 @@ local servers = {
   "taplo",
   "tsserver",
   "yamlls",
+  "move_analyzer",
 }
 
 local lspconfig = require("lspconfig")
