@@ -17,6 +17,7 @@ local servers = {
   "tsserver",
   "yamlls",
   "move_analyzer",
+  "volar",
 }
 
 local lspconfig = require("lspconfig")

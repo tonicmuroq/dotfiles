@@ -46,8 +46,8 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "buffer", keyword_length = 4 },
     { name = "nvim_lsp" },
+    { name = "buffer",                 keyword_length = 4 },
     { name = "luasnip" },
     { name = "path" },
     { name = "nvim_lsp_signature_help" },
@@ -56,6 +56,7 @@ cmp.setup({
   sorting = {
     comparators = {
       compare.score,
+      require "cmp-under-comparator".under,
       compare.recently_used,
     },
   },

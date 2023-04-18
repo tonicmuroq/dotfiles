@@ -27,6 +27,7 @@ packer.startup({
 
     -- ui enhancement
     use("stevearc/dressing.nvim")
+    use("NvChad/nvim-colorizer.lua")
 
     -- syntax highlight
     use("lifepillar/pgsql.vim")
@@ -36,9 +37,11 @@ packer.startup({
 
     -- copilot
     -- use("github/copilot.vim")
+    -- use("zbirenbaum/copilot.lua")
 
     -- colorscheme
     use("tyrannicaltoucan/vim-deep-space")
+    use({ "catppuccin/nvim", as = "catppuccin" })
 
     -- dependency management
     use("williamboman/mason.nvim")
@@ -66,6 +69,7 @@ packer.startup({
     use("hrsh7th/cmp-path")
     use("saadparwaiz1/cmp_luasnip")
     use("L3MON4D3/LuaSnip")
+    use("lukas-reineke/cmp-under-comparator")
 
     -- telescope
     use("nvim-telescope/telescope.nvim")
@@ -106,3 +110,4 @@ require("plugins.telescope")
 require("plugins.nvim_tree")
 require("plugins.test")
 require("plugins.airline")
+require("plugins.colorize")
