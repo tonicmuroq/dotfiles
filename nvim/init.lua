@@ -5,8 +5,8 @@ require("lsp")
 require("autocmd")
 
 
-require('filetype').setup({
-  extensions = {
-    move = 'move',
-  }
-})
+-- require('filetype').setup({
+--   extensions = {
+--     move = 'move',
+--   }
+-- })
