@@ -34,6 +34,11 @@ local options = {
   timeoutlen = 300,     -- time to wait for a mapped sequence to complete (in milliseconds)
 
   list = true,
+  listchars = {
+    nbsp = '+',
+    tab = '  ',
+    trail = '-',
+  },
 }
 
 for k, v in pairs(options) do
