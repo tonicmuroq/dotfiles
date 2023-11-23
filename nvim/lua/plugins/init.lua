@@ -74,6 +74,7 @@ packer.startup({
     -- telescope
     use("nvim-telescope/telescope.nvim")
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use('LukasPietzschmann/telescope-tabs')
 
     -- status line
     use("vim-airline/vim-airline")
