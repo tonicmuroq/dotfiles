@@ -1,3 +1,31 @@
+Host *
+    ServerAliveInterval 30
+    AddKeysToAgent yes
+
+Host tonyseek.com
+    User tonic
+
 Host bitbucket.org github.com
-User tonicbupt
-ProxyCommand nc -X 5 -x 127.0.0.1:8889 %h %p
+    Hostname github.com
+    IdentityFile ~/.ssh/id_rsa
+    # ProxyCommand nc -X 5 -x 127.0.0.1:6153 %h %p
+
+Host enjoylab
+    Hostname github.com
+    IdentityFile ~/.ssh/id_enjoy
+    # ProxyCommand nc -X 5 -x 127.0.0.1:6153 %h %p
+
+Host nfp
+    Hostname github.com
+    IdentityFile ~/.ssh/nfp_rsa
+    # ProxyCommand nc -X 5 -x 127.0.0.1:6153 %h %p
+
+Host c1-*
+    User tonic
+    IdentityFile ~/.ssh/id_enjoy
+    ForwardAgent yes
+
+Host c2-*
+    User tonic
+    IdentityFile ~/.ssh/nfp_rsa
+    ForwardAgent yes
