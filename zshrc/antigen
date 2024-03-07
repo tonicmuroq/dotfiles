@@ -6,9 +6,13 @@ CASE_SENSITIVE="true"
 
 antigen use oh-my-zsh
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 antigen bundle autojump
 antigen bundle brew
-antigen bundle docker
+# antigen bundle docker
 antigen bundle fzf
 antigen bundle git
 antigen bundle golang
@@ -33,16 +37,15 @@ export CARGOPATH="$HOME/.cargo"
 export PATH="$PATH:$CARGOPATH/bin:"
 
 function httproxy {
-    export https_proxy=http://127.0.0.1:8888;
-    export HTTPS_PROXY=http://127.0.0.1:8888;
-    export http_proxy=http://127.0.0.1:8888;
-    export HTTP_PROXY=http://127.0.0.1:8888;
-    export all_proxy=socks5://127.0.0.1:8889;
+    export https_proxy=http://127.0.0.1:6152;
+    export http_proxy=http://127.0.0.1:6152;
+    export all_proxy=socks5://127.0.0.1:6153;
 }
 
 eval "$(direnv hook zsh)"
 
 # TAT
+SPACESHIP_PROMPT_ASYNC="true"
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   dir           # Current directory section
