@@ -5,7 +5,6 @@ local servers = {
   "bashls",
   "clangd",
   "cssls",
-  "eslint",
   "gopls",
   "html",
   "jsonls",

@@ -7,5 +7,5 @@ require("formatter").setup({
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   pattern = { "*.yml", "*.yaml" },
-  command = "FormatWrite",
+  command = ":FormatWrite",
 })

@@ -36,7 +36,7 @@ packer.startup({
     use("modocache/move.vim")
 
     -- copilot
-    -- use("github/copilot.vim")
+    use("github/copilot.vim")
     -- use("zbirenbaum/copilot.lua")
 
     -- colorscheme
@@ -48,7 +48,7 @@ packer.startup({
     use("williamboman/mason-lspconfig.nvim")
 
     -- util
-    use("windwp/nvim-autopairs")
+    -- use("windwp/nvim-autopairs")
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
     -- lsp
@@ -101,7 +101,6 @@ packer.startup({
 
 require("plugins.dressing")
 require("plugins.colorscheme")
--- require("plugins.autopairs")
 require("plugins.treesitter")
 require("plugins.fidget")
 require("plugins.formatter")
@@ -112,3 +111,4 @@ require("plugins.nvim_tree")
 require("plugins.test")
 require("plugins.airline")
 -- require("plugins.colorize")
+-- require("plugins.typescript_tools")
