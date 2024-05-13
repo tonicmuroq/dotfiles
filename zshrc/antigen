@@ -29,7 +29,7 @@ antigen theme denysdovhan/spaceship-prompt spaceship
 antigen apply
 
 # env setup
-[ -f "$HOME/.alias.zsh" ] && source "$HOME/.alias.zsh"
+[ -f "$HOME/.extra.zsh" ] && source "$HOME/.extra.zsh"
 
 export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
