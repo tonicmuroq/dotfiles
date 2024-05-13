@@ -1,5 +1,9 @@
 # setup homebrew env
-[ -z "$HOMEBREW_PREFIX" ] && HOMEBREW_PREFIX="$(brew --prefix)"
+
+[ -f "/opt/homebrew/bin/brew" ] && BREW="/opt/homebrew/bin/brew"
+[ -f "/usr/local/bin/brew" ] && BREW="/usr/local/bin/brew"
+
+[ -z "$HOMEBREW_PREFIX" ] && HOMEBREW_PREFIX="$($BREW --prefix)"
 
 # setup antigen
 source "$HOMEBREW_PREFIX/share/antigen/antigen.zsh"
