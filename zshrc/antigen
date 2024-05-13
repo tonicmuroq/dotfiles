@@ -1,50 +1,49 @@
-source "/usr/local/share/antigen/antigen.zsh"
+# setup homebrew env
+[ -z "$HOMEBREW_PREFIX" ] && HOMEBREW_PREFIX="$(brew --prefix)"
+
+# setup antigen
+source "$HOMEBREW_PREFIX/share/antigen/antigen.zsh"
+
 builtin_fpath=($fpath[@])
 
 # oh-my-zsh vars
 CASE_SENSITIVE="true"
 
+# antigen setup
 antigen use oh-my-zsh
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 
 antigen bundle autojump
 antigen bundle brew
-# antigen bundle docker
 antigen bundle fzf
 antigen bundle git
 antigen bundle golang
-antigen bundle pip
-antigen bundle pyenv
-antigen bundle python
-antigen bundle virtualenv
 
 antigen bundle zsh-users/zsh-completions src
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme denysdovhan/spaceship-prompt spaceship
+
 antigen apply
 
-source "/Users/tonic/.alias.zsh"
+# env setup
+[ -f "$HOME/.alias.zsh" ] && source "$HOME/.alias.zsh"
 
-export PATH="$PATH:/usr/local/opt/go/libexec/bin:/usr/local/sbin"
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+
 export GOPATH="$HOME/.go"
-export GOPROXY="https://goproxy.cn"
-export GOPRIVATE="git.garena.com"
 export PATH="$PATH:$GOPATH/bin"
+
 export CARGOPATH="$HOME/.cargo"
 export PATH="$PATH:$CARGOPATH/bin:"
 
-function httproxy {
-    export https_proxy=http://127.0.0.1:6152;
-    export http_proxy=http://127.0.0.1:6152;
-    export all_proxy=socks5://127.0.0.1:6153;
-}
+# pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$($HOMEBREW_PREFIX/bin/pyenv init --path)"
 
+# direnv setup
 eval "$(direnv hook zsh)"
 
-# TAT
+# theme config
 SPACESHIP_PROMPT_ASYNC="true"
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
