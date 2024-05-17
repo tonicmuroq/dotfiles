@@ -43,6 +43,7 @@ packer.startup({
     use({ "catppuccin/nvim", as = "catppuccin" })
     use("rebelot/kanagawa.nvim")
     use("AlexvZyl/nordic.nvim")
+    use("folke/tokyonight.nvim")
 
     -- dependency management
     use("williamboman/mason.nvim")
