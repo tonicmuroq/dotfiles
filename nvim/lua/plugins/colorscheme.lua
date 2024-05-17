@@ -10,7 +10,9 @@ require('kanagawa').setup({
   dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
   terminalColors = true, -- define vim.g.terminal_color_{0,17}
   colors = {             -- add/modify theme and palette colors
-    palette = {},
+    palette = {
+      peachRed = "#E46876",
+    },
     theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
   },
   overrides = function(colors) -- add/modify highlights
