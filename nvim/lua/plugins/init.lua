@@ -37,11 +37,12 @@ packer.startup({
 
     -- copilot
     use("github/copilot.vim")
-    -- use("zbirenbaum/copilot.lua")
 
     -- colorscheme
     use("tyrannicaltoucan/vim-deep-space")
     use({ "catppuccin/nvim", as = "catppuccin" })
+    use("rebelot/kanagawa.nvim")
+    use("AlexvZyl/nordic.nvim")
 
     -- dependency management
     use("williamboman/mason.nvim")
