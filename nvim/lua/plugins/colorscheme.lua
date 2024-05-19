@@ -16,7 +16,9 @@ require('kanagawa').setup({
     theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
   },
   overrides = function(colors) -- add/modify highlights
-    return {}
+    return {
+      ["@string.special.url"] = { fg = colors.theme.syn.special1, undercurl = false },
+    }
   end,
   background = {   -- map the value of 'background' option to a theme
     dark = "wave", -- try "dragon" !
