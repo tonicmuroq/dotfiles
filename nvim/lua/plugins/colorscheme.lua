@@ -18,6 +18,7 @@ require('kanagawa').setup({
   overrides = function(colors) -- add/modify highlights
     return {
       ["@string.special.url"] = { fg = colors.theme.syn.special1, undercurl = false },
+      ["@variable.builtin"] = { fg = colors.theme.syn.special2, italic = false },
     }
   end,
   background = {   -- map the value of 'background' option to a theme
