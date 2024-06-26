@@ -1,4 +1,15 @@
 return {
   { "folke/noice.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
+  { "nvimdev/dashboard-nvim", enabled = false },
+  { "folke/flash.nvim", enabled = false },
+  { "rafamadriz/friendly-snippets", enabled = false },
+  { "lewis6991/gitsigns.nvim", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = false },
+  { "echasnovski/mini.ai", enabled = false },
+  { "echasnovski/mini.pairs", enabled = false },
+  { "rcarriga/nvim-notify", enabled = false },
+  { "garymjr/nvim-snippets", enabled = false },
+  { "windwp/nvim-ts-autotag", enabled = false },
+  { "folke/todo-comments.nvim", enabled = false },
 }
