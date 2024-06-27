@@ -450,13 +450,10 @@ require("lazy").setup({
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
-    init = function()
-      vim.cmd("colorscheme kanagawa")
-    end,
     config = function()
       require("kanagawa").setup({
         compile = false,
-        undercurl = true,
+        undercurl = false,
         commentStyle = { italic = false },
         functionStyle = {},
         keywordStyle = { italic = false },
@@ -468,6 +465,7 @@ require("lazy").setup({
         colors = {
           palette = {
             peachRed = "#E46876",
+            sakuraPink = "#E46876",
           },
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
@@ -482,6 +480,7 @@ require("lazy").setup({
           light = "lotus",
         },
       })
+      vim.cmd.colorscheme("kanagawa")
     end,
   },
 })
