@@ -179,7 +179,7 @@ require("lazy").setup({
       })
     end,
     keys = {
-      { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
+      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
     },
   },
   {
@@ -539,6 +539,13 @@ require("lazy").setup({
           lualine_z = { "location" },
         },
       })
+    end,
+  },
+  {
+    "hedyhli/outline.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>l", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+      require("outline").setup()
     end,
   },
   { "stevearc/dressing.nvim" },
