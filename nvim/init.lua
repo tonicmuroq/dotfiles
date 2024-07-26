@@ -29,6 +29,7 @@ vim.opt.listchars = {
   tab = "  ",
   trail = "-",
 }
+vim.opt.clipboard = "unnamed"
 
 -- keymaps
 vim.keymap.set("i", "jk", "<Esc>", { desc = "jk to <Esc>" })
