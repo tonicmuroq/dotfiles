@@ -144,8 +144,9 @@ require("lazy").setup({
       telescope.load_extension("live_grep_args")
       telescope.load_extension("ui-select")
 
-      vim.keymap.set("n", "<leader>f", builtin.find_files)
-      vim.keymap.set("n", "<leader>o", builtin.oldfiles)
+      vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find [F]iles" })
+      vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Live [G]rep" })
+      vim.keymap.set("n", "<leader>o", builtin.oldfiles, { desc = "Old [O]pened files" })
       vim.keymap.set("n", "<leader>bb", builtin.buffers)
       vim.keymap.set("n", "<leader>rg", builtin.grep_string)
       vim.keymap.set("n", "<leader>xx", builtin.diagnostics)
