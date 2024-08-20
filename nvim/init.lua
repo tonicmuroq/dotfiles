@@ -550,6 +550,24 @@ require("lazy").setup({
       require("outline").setup()
     end,
   },
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+      require("dashboard").setup({
+        shortcut_type = 'letter',
+        config = {
+          week_header = {
+            enable = true,
+          },
+          disable_move = false,
+        },
+      })
+    end,
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+  },
   { "stevearc/dressing.nvim" },
   { "lifepillar/pgsql.vim" },
   { "uarun/vim-protobuf" },
