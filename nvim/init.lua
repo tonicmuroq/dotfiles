@@ -317,7 +317,6 @@ require("lazy").setup({
           },
         },
         taplo = {},
-        tsserver = {},
         yamlls = {
           settings = {
             yaml = {
