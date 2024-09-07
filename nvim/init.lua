@@ -398,7 +398,6 @@ require("lazy").setup({
 
       cmp.setup({
         completion = { completeopt = "menu,menuone,noinsert" },
-
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -407,6 +406,7 @@ require("lazy").setup({
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = {
+          { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "vsnip" },
           { name = "path" },
@@ -417,6 +417,8 @@ require("lazy").setup({
           expandable_indicator = true,
           format = lspkind.cmp_format({
             mode = "symbol_text",
+            max_width = 200,
+            symbol_map = { Copilot = "" },
           }),
         },
       })
@@ -571,7 +573,20 @@ require("lazy").setup({
   { "lifepillar/pgsql.vim" },
   { "uarun/vim-protobuf" },
   { "maralla/gomod.vim" },
-  { "github/copilot.vim" },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup()
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
