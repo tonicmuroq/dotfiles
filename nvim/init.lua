@@ -324,6 +324,7 @@ require("lazy").setup({
             },
           },
         },
+        ts_ls = {},
         volar = {},
       }
 
