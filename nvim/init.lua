@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "html,css,javascript,typescript,typescriptreact,scss,json,yaml,lua",
+  pattern = "html,css,javascript,typescript,typescriptreact,scss,json,yaml,lua,c,cpp,java",
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
-  command = [[ set fo-=c fo-=r fo-=o ]],
+  command = "set fo-=c fo-=r fo-=o",
   desc = "do not auto commenting new lines",
 })
 
