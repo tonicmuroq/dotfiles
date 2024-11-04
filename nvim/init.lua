@@ -595,14 +595,21 @@ require("lazy").setup({
       { "[B",         "<cmd>BufferLineMovePrev<cr>",             desc = "Move buffer prev" },
       { "]B",         "<cmd>BufferLineMoveNext<cr>",             desc = "Move buffer next" },
     },
-    opts = {
-      options = {
-        always_show_bufferline = false,
-        auto_toggle_bufferline = true,
-      },
-    },
-    config = function(_, opts)
-      require("bufferline").setup(opts)
+    config = function()
+      require("bufferline").setup({
+        options = {
+          always_show_bufferline = false,
+          auto_toggle_bufferline = true,
+          offsets = {
+            {
+              filetype = "NvimTree",
+              text = "NvimTree File Explorer",
+              text_align = "left",
+              separator = true,
+            }
+          },
+        },
+      })
     end,
   },
   {
