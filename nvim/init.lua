@@ -585,6 +585,7 @@ require("lazy").setup({
     config = function()
       require("bufferline").setup({
         options = {
+          show_buffer_close_icons = false,
           always_show_bufferline = true,
           offsets = {
             {
@@ -595,6 +596,13 @@ require("lazy").setup({
             }
           },
         },
+        highlights = {
+          buffer_selected = {
+            bold = true,
+            italic = false,
+          },
+        },
+
       })
       vim.keymap.set("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin" })
       vim.keymap.set("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete Non-Pinned Buffers" })
