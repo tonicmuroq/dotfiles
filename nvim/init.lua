@@ -422,6 +422,17 @@ require("lazy").setup({
             symbol_map = { Copilot = "" },
           }),
         },
+        window = {
+          completion = {
+            border = 'rounded',
+            scrollbar = true,
+            winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
+          },
+          documentation = {
+            border = 'rounded',
+            winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
+          },
+        },
       })
     end,
   },
