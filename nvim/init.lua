@@ -659,6 +659,14 @@ require("lazy").setup({
     },
   },
   {
+    "hrsh7th/nvim-pasta",
+    config = function()
+      local pasta_mapping = require("pasta.mapping")
+      vim.keymap.set({ "n", "x" }, "p", pasta_mapping.p)
+      vim.keymap.set({ "n", "x" }, "P", pasta_mapping.P)
+    end,
+  },
+  {
     "zbirenbaum/copilot-cmp",
     dependencies = "copilot.lua",
     config = function()
