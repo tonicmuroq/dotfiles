@@ -592,7 +592,17 @@ require("lazy").setup({
   },
   {
     "akinsho/bufferline.nvim",
+    event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
+    keys = {
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle Pin" },
+      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
+      { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>",          desc = "Delete Other Buffers" },
+      { "<S-h>",      "<cmd>BufferLineCyclePrev<cr>",            desc = "Prev Buffer" },
+      { "<S-l>",      "<cmd>BufferLineCycleNext<cr>",            desc = "Next Buffer" },
+      { "[B",         "<cmd>BufferLineMovePrev<cr>",             desc = "Move buffer prev" },
+      { "]B",         "<cmd>BufferLineMoveNext<cr>",             desc = "Move buffer next" },
+    },
     config = function()
       require("bufferline").setup({
         options = {
@@ -613,13 +623,15 @@ require("lazy").setup({
             italic = false,
           },
         },
+
       })
-      vim.keymap.set("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin" })
-      vim.keymap.set("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete Non-Pinned Buffers" })
-      vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
-      vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
-      vim.keymap.set("n", "[b", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer prev" })
-      vim.keymap.set("n", "]b", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer next" })
+      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
+      })
     end,
   },
   {
