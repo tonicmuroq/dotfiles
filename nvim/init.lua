@@ -268,7 +268,7 @@ require("lazy").setup({
         },
         bashls = {},
         clangd = {
-          cmd = { "clangd", "--function-arg-placeholders=0" },
+          cmd = { "clangd", "--function-arg-placeholders=0", "--offset-encoding=utf-16" },
         },
         cssls = {},
         gopls = {},
