@@ -40,7 +40,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set(
   "n",
   "<Esc>",
-  "<cmd>nohlsearch<CR>",
+  "<cmd>nohlsearch<cr>",
   { desc = "Clear search highlights when press <Esc> in normal mode" }
 )
 
@@ -107,7 +107,7 @@ require("lazy").setup({
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         cond = function()
-          return vim.fn.executable("make")
+          return vim.fn.executable("make") == 1
         end,
       },
     },
@@ -586,7 +586,7 @@ require("lazy").setup({
   {
     "hedyhli/outline.nvim",
     config = function()
-      vim.keymap.set("n", "<leader>l", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+      vim.keymap.set("n", "<leader>l", "<cmd>Outline<cr>", { desc = "Toggle Outline" })
       require("outline").setup()
     end,
   },
@@ -595,9 +595,9 @@ require("lazy").setup({
     event = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
     keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle Pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
-      { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>",          desc = "Delete Other Buffers" },
+      { "<leader>bp", "<cmd>BufferLineTogglePin<cr>",            desc = "Toggle Pin" },
+      { "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete Non-Pinned Buffers" },
+      { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>",          desc = "Delete Other Buffers" },
       { "<S-h>",      "<cmd>BufferLineCyclePrev<cr>",            desc = "Prev Buffer" },
       { "<S-l>",      "<cmd>BufferLineCycleNext<cr>",            desc = "Next Buffer" },
       { "[B",         "<cmd>BufferLineMovePrev<cr>",             desc = "Move buffer prev" },
@@ -675,6 +675,48 @@ require("lazy").setup({
     dependencies = "copilot.lua",
     config = function()
       require("copilot_cmp").setup()
+    end,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    event = "VeryLazy",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    keys = {
+      {
+        "<leader>ap",
+        function()
+          local actions = require("CopilotChat.actions")
+          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+        end,
+        desc = "CopilotChat - Prompt actions",
+      },
+      {
+        "<leader>ai",
+        function()
+          local input = vim.fn.input("Ask Copilot: ")
+          if input ~= "" then
+            vim.cmd("CopilotChat " .. input)
+          end
+        end,
+        desc = "CopilotChat - Ask input",
+      },
+      { "<leader>ae", "<cmd>CopilotChatExplain<cr>",   desc = "CopilotChat - Explain code" },
+      { "<leader>at", "<cmd>CopilotChatTests<cr>",     desc = "CopilotChat - Generate tests" },
+      { "<leader>ar", "<cmd>CopilotChatReview<cr>",    desc = "CopilotChat - Review code" },
+      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>",  desc = "CopilotChat - Refactor code" },
+      { "<leader>am", "<cmd>CopilotChatCommit<cr>",    desc = "CopilotChat - Generate commit message for all changes", },
+      { "<leader>ad", "<cmd>CopilotChatDebugInfo<cr>", desc = "CopilotChat - Debug Info" },
+      { "<leader>af", "<cmd>CopilotChatFix<cr>",       desc = "CopilotChat - Fix Diagnostic" },
+      { "<leader>al", "<cmd>CopilotChatReset<cr>",     desc = "CopilotChat - Clear buffer and chat history" },
+      { "<leader>av", "<cmd>CopilotChatToggle<cr>",    desc = "CopilotChat - Toggle" },
+      { "<leader>a?", "<cmd>CopilotChatModels<cr>",    desc = "CopilotChat - Select Models" },
+    },
+    config = function()
+      require("CopilotChat").setup()
     end,
   },
   {
