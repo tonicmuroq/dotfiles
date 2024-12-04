@@ -679,7 +679,6 @@ require("lazy").setup({
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     event = "VeryLazy",
     dependencies = {
       { "zbirenbaum/copilot.lua" },
