@@ -1,8 +1,6 @@
 [user]
     name = tonic
     email = tonicbupt@gmail.com 
-[merge]
-    tool = vimdiff
 
 [alias]
     st = status
@@ -10,21 +8,26 @@
     ci = commit -a
     co = checkout
     wtf = "!git commit -m\"$(curl -L -s https://commitlog.wolege.ca/)"\"
-[diff]
-    external = git_diff_wrapper
+
 [pager]
     diff =
 	branch = false
+
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/tonic/.gitignore
+
 [help]
 	autocorrect = 1
+
 [color]
     ui = true
+
 #[http]
 #	proxy = 10.8.0.1:8118
+
 [push]
 	default = current
+
 [http]
 	sslVerify = true
