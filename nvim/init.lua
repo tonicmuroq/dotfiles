@@ -178,6 +178,9 @@ require("lazy").setup({
         update_focused_file = {
           enable = true,
         },
+        git = {
+          enable = true,
+        },
       })
     end,
     keys = {
