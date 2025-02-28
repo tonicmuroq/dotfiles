@@ -99,6 +99,7 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      "neovim/nvim-lspconfig",
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "nvim-telescope/telescope-ui-select.nvim",
@@ -219,11 +220,6 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     dependencies = {
       {
-        "williamboman/mason.nvim",
-        config = true,
-      },
-      { "williamboman/mason-lspconfig.nvim" },
-      {
         "j-hui/fidget.nvim",
         opts = {
           notification = {
@@ -258,7 +254,19 @@ require("lazy").setup({
           end
         end,
       })
-
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp",
+      {
+        "williamboman/mason.nvim",
+        config = true,
+      },
+    },
+    config = function()
       local servers = {
         lua_ls = {
           settings = {
