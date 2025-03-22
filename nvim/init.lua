@@ -689,45 +689,45 @@ require("lazy").setup({
     end,
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
+    "yetone/avante.nvim",
     event = "VeryLazy",
+    version = false,
+    opts = {
+      provider = "copilot",
+    },
+    build = "make",
     dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    keys = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua",        -- for providers='copilot'
       {
-        "<leader>ap",
-        function()
-          local actions = require("CopilotChat.actions")
-          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-        end,
-        desc = "CopilotChat - Prompt actions",
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            use_absolute_path = true,
+          },
+        },
       },
       {
-        "<leader>ai",
-        function()
-          local input = vim.fn.input("Ask Copilot: ")
-          if input ~= "" then
-            vim.cmd("CopilotChat " .. input)
-          end
-        end,
-        desc = "CopilotChat - Ask input",
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
       },
-      { "<leader>ae", "<cmd>CopilotChatExplain<cr>",   desc = "CopilotChat - Explain code" },
-      { "<leader>at", "<cmd>CopilotChatTests<cr>",     desc = "CopilotChat - Generate tests" },
-      { "<leader>ar", "<cmd>CopilotChatReview<cr>",    desc = "CopilotChat - Review code" },
-      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>",  desc = "CopilotChat - Refactor code" },
-      { "<leader>am", "<cmd>CopilotChatCommit<cr>",    desc = "CopilotChat - Generate commit message for all changes", },
-      { "<leader>ad", "<cmd>CopilotChatDebugInfo<cr>", desc = "CopilotChat - Debug Info" },
-      { "<leader>af", "<cmd>CopilotChatFix<cr>",       desc = "CopilotChat - Fix Diagnostic" },
-      { "<leader>al", "<cmd>CopilotChatReset<cr>",     desc = "CopilotChat - Clear buffer and chat history" },
-      { "<leader>av", "<cmd>CopilotChatToggle<cr>",    desc = "CopilotChat - Toggle" },
-      { "<leader>a?", "<cmd>CopilotChatModels<cr>",    desc = "CopilotChat - Select Models" },
     },
-    config = function()
-      require("CopilotChat").setup()
-    end,
   },
   {
     "rebelot/kanagawa.nvim",
@@ -751,6 +751,7 @@ require("lazy").setup({
           },
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
+        theme = "wave",
         overrides = function(colors)
           return {
             ["@string.special.url"] = { fg = colors.theme.syn.special1, undercurl = false },
