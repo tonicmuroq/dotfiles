@@ -336,7 +336,6 @@ require("lazy").setup({
           },
         },
         ts_ls = {},
-        volar = {},
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
