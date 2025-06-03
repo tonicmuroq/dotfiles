@@ -79,6 +79,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
   desc = "do not auto commenting new lines",
 })
 
+vim.diagnostic.config({
+  virtual_text = true,
+  underline = true,
+  signs = true,
+})
+
 -- plugins
 
 -- init lazy.nvim
@@ -268,15 +274,7 @@ require("lazy").setup({
     },
     config = function()
       local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
+        lua_ls = {},
         bashls = {},
         clangd = {
           cmd = { "clangd", "--function-arg-placeholders=0", "--offset-encoding=utf-16" },
