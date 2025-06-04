@@ -269,7 +269,7 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         config = true,
       },
     },
