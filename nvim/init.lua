@@ -263,7 +263,8 @@ require("lazy").setup({
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    version = "v1.32.0",
     dependencies = {
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
@@ -341,6 +342,7 @@ require("lazy").setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+      require("neodev").setup()
       local lspconfig = require("lspconfig")
 
       require("mason").setup()
@@ -448,7 +450,7 @@ require("lazy").setup({
     "mfussenegger/nvim-dap",
     dependencies = {
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = { ensure_installed = { "delve" } },
       },
       {
