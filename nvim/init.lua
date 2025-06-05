@@ -24,6 +24,9 @@ vim.opt.splitright = true
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 300
 vim.opt.list = true
+
+-- stupid diagnostic
+---@diagnostic disable-next-line: missing-fields
 vim.opt.listchars = {
   nbsp = "+",
   tab = "  ",
@@ -43,9 +46,6 @@ vim.keymap.set(
   "<cmd>nohlsearch<cr>",
   { desc = "Clear search highlights when press <Esc> in normal mode" }
 )
-
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
 -- autocmds
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -83,6 +83,7 @@ vim.diagnostic.config({
   virtual_text = true,
   underline = true,
   signs = true,
+  float = true,
 })
 
 -- plugins
