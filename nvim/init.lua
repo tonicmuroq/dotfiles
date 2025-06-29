@@ -367,7 +367,7 @@ require("lazy").setup({
       {
         "<leader>w",
         function()
-          require("conform").format({ async = true, lsp_fallback = true })
+          require("conform").format({ async = true, lsp_fallback = true, stop_after_first = true })
         end,
         mode = "",
         desc = "Format buffer",
@@ -386,7 +386,7 @@ require("lazy").setup({
       end,
       formatters_by_ft = {
         go = { "goimports", "gofumpt" },
-        javascript = { { "prettierd", "prettier" } },
+        javascript = { "prettierd", "prettier" },
         typescript = { "prettier" },
       },
     },
