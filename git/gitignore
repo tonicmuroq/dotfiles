@@ -13,3 +13,4 @@ venv
 .envrc
 .qiniu_pythonsdk_hostscache.json
 .pytest_cache
+.claude
