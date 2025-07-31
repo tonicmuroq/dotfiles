@@ -228,6 +228,7 @@ require("lazy").setup({
     dependencies = {
       {
         "j-hui/fidget.nvim",
+        version = "v1.6.1",
         opts = {
           notification = {
             window = {
