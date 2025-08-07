@@ -640,6 +640,10 @@ require("lazy").setup({
   { "uarun/vim-protobuf" },
   { "maralla/gomod.vim" },
   {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     build = ":Copilot auth",
