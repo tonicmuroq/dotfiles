@@ -9,7 +9,9 @@ dist/
 *.egg-info/
 __pycache__/
 venv
+.venv
 .python-version
+.env
 .envrc
 .qiniu_pythonsdk_hostscache.json
 .pytest_cache
