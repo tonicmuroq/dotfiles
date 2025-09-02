@@ -307,9 +307,8 @@ require("lazy").setup({
                   enforce = true,
                 },
               },
-              checkOnSave = {
-                command = "clippy",
-              },
+              checkOnSave = true,
+              check = { command = "clippy" },
               completion = {
                 callable = {
                   snippets = "add_parentheses",
