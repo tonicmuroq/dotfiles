@@ -638,6 +638,7 @@ require("lazy").setup({
   { "lifepillar/pgsql.vim" },
   { "uarun/vim-protobuf" },
   { "maralla/gomod.vim" },
+  { "lewis6991/gitsigns.nvim" },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
