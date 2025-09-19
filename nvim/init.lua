@@ -90,7 +90,7 @@ vim.diagnostic.config({
 
 -- init lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -224,6 +224,18 @@ require("lazy").setup({
     end,
   },
   {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        {
+          path = "${3rd}/luv/library",
+          words = { "vim%.uv" },
+        },
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
@@ -236,10 +248,6 @@ require("lazy").setup({
             },
           },
         },
-      },
-      {
-        "folke/neodev.nvim",
-        opts = {},
       },
     },
     config = function()
@@ -335,8 +343,6 @@ require("lazy").setup({
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-      require("neodev").setup()
 
       require("mason").setup()
       require("mason-lspconfig").setup({
