@@ -253,13 +253,6 @@ require("lazy").setup({
           map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
           map("K", vim.lsp.buf.hover, "Hover Documentation")
-
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map("<leader>th", function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))
-            end, "[T]oggle Inlay [H]ints")
-          end
         end,
       })
     end,
@@ -344,7 +337,6 @@ require("lazy").setup({
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       require("neodev").setup()
-      local lspconfig = require("lspconfig")
 
       require("mason").setup()
       require("mason-lspconfig").setup({
@@ -354,7 +346,8 @@ require("lazy").setup({
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            lspconfig[server_name].setup(server)
+            vim.lsp.config[server_name] = server
+            vim.lsp.enable(server_name)
           end,
         },
       })
@@ -634,10 +627,17 @@ require("lazy").setup({
       { "nvim-tree/nvim-web-devicons" },
     },
   },
-  { "stevearc/dressing.nvim" },
-  { "lifepillar/pgsql.vim" },
-  { "uarun/vim-protobuf" },
-  { "maralla/gomod.vim" },
+  {
+    "stevearc/dressing.nvim",
+    opts = {
+      input = {
+        enabled = true,
+        win_options = {
+          winhighlight = "Normal:Normal,FloatBorder:Normal,FloatTitle:Normal",
+        },
+      },
+    },
+  },
   { "lewis6991/gitsigns.nvim" },
   {
     "MeanderingProgrammer/render-markdown.nvim",
