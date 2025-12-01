@@ -440,6 +440,7 @@ require("lazy").setup({
           },
           documentation = {
             border = 'rounded',
+            scrollbar = true,
             winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
           },
         },
