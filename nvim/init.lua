@@ -387,6 +387,7 @@ require("lazy").setup({
         go = { "goimports", "gofumpt" },
         javascript = { "prettierd", "prettier" },
         typescript = { "prettier" },
+        python = { "ruff_organize_imports" },
       },
     },
   },
