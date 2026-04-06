@@ -197,31 +197,8 @@ require("lazy").setup({
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        modules = {},
-        ensure_installed = {},
-        auto_install = true,
-        sync_install = false,
-        ignore_install = {},
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = true,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
-      })
-    end,
   },
   {
     "folke/lazydev.nvim",
@@ -387,7 +364,7 @@ require("lazy").setup({
         go = { "goimports", "gofumpt" },
         javascript = { "prettierd", "prettier" },
         typescript = { "prettier" },
-        python = { "ruff_organize_imports" },
+        python = { "ruff_fix", "ruff_organize_imports" },
       },
     },
   },
