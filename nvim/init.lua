@@ -197,8 +197,21 @@ require("lazy").setup({
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     branch = "main",
     build = ":TSUpdate",
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+          if lang and not pcall(vim.treesitter.language.add, lang) then
+            require("nvim-treesitter").install({ lang })
+          end
+
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end,
   },
   {
     "folke/lazydev.nvim",
