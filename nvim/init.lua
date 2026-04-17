@@ -323,6 +323,9 @@ require("lazy").setup({
           settings = {
             yaml = {
               keyOrdering = false,
+              schemaStore = {
+                enable = false,
+              },
             },
           },
         },
