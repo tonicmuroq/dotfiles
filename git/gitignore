@@ -12,6 +12,7 @@ venv
 .venv
 .python-version
 .env
+.env.example
 .envrc
 .qiniu_pythonsdk_hostscache.json
 .pytest_cache
