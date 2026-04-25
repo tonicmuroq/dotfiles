@@ -7,13 +7,10 @@ vim.opt.updatetime = 300
 vim.opt.background = "dark"
 vim.opt.number = true
 vim.opt.cursorline = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.mouse = ""
 vim.opt.signcolumn = "yes"
 vim.opt.pumheight = 15
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -81,9 +78,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.diagnostic.config({
   virtual_text = true,
-  underline = true,
-  signs = true,
-  float = true,
 })
 
 -- plugins
@@ -137,12 +131,6 @@ require("lazy").setup({
           dynamic_preview_title = true,
         },
         extensions = {
-          ["fzf"] = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-          },
           ["ui-select"] = {
             themes.get_dropdown(),
           },
@@ -184,9 +172,6 @@ require("lazy").setup({
           adaptive_size = true,
         },
         update_focused_file = {
-          enable = true,
-        },
-        git = {
           enable = true,
         },
       })
@@ -542,12 +527,7 @@ require("lazy").setup({
           theme = "onedark",
         },
         sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
           lualine_c = { { "filename", path = 1 } },
-          lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
         },
       })
     end,
@@ -618,7 +598,6 @@ require("lazy").setup({
     "stevearc/dressing.nvim",
     opts = {
       input = {
-        enabled = true,
         win_options = {
           winhighlight = "Normal:Normal,FloatBorder:Normal,FloatTitle:Normal",
         },
@@ -635,34 +614,21 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       require("kanagawa").setup({
-        compile = false,
         undercurl = false,
         commentStyle = { italic = false },
-        functionStyle = {},
         keywordStyle = { italic = false },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = false,
-        dimInactive = false,
-        terminalColors = true,
         colors = {
           palette = {
             peachRed = "#E46876",
             sakuraPink = "#E46876",
           },
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
-        theme = "wave",
         overrides = function(colors)
           return {
             ["@string.special.url"] = { fg = colors.theme.syn.special1, undercurl = false },
             ["@variable.builtin"] = { fg = colors.theme.syn.special2, italic = false },
           }
         end,
-        background = {
-          dark = "wave",
-          light = "lotus",
-        },
       })
       vim.cmd.colorscheme("kanagawa")
     end,
