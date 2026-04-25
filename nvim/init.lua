@@ -339,7 +339,7 @@ require("lazy").setup({
       {
         "<leader>w",
         function()
-          require("conform").format({ async = true, lsp_fallback = true, stop_after_first = true })
+          require("conform").format({ async = true, lsp_format = "fallback", stop_after_first = true })
         end,
         mode = "",
         desc = "Format buffer",
@@ -353,7 +353,7 @@ require("lazy").setup({
         }
         return {
           timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          lsp_format = not disable_filetypes[vim.bo[bufnr].filetype] and "fallback" or "never",
         }
       end,
       formatters_by_ft = {
@@ -366,7 +366,7 @@ require("lazy").setup({
   },
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
@@ -415,6 +415,21 @@ require("lazy").setup({
             scrollbar = true,
             winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
           },
+        },
+      })
+
+      cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
+        },
+      })
+
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "path" },
+          { name = "cmdline" },
         },
       })
     end,
