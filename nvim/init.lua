@@ -260,28 +260,15 @@ require("lazy").setup({
         gopls = {},
         html = {},
         jsonls = {},
-        pyright = {
-          settings = {
-            python = {
-              analysis = {
-                typeCheckingMode = "off",
-                diagnosticSeverityOverrides = {
-                  reportUnusedFunction = "off",
-                },
-              },
-            },
-          },
-        },
+        pyright = {},
         rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
               imports = {
                 granularity = {
-                  group = "crate",
                   enforce = true,
                 },
               },
-              checkOnSave = true,
               check = { command = "clippy" },
               completion = {
                 callable = {
@@ -305,7 +292,6 @@ require("lazy").setup({
         yamlls = {
           settings = {
             yaml = {
-              keyOrdering = false,
               schemaStore = {
                 enable = false,
               },
@@ -370,10 +356,6 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-vsnip",
-      "hrsh7th/vim-vsnip",
-      "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim",
     },
     config = function()
@@ -391,7 +373,6 @@ require("lazy").setup({
         }),
         sources = {
           { name = "nvim_lsp" },
-          { name = "vsnip" },
           { name = "path" },
           { name = "buffer",  keyword_length = 4 },
         },
@@ -421,14 +402,6 @@ require("lazy").setup({
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
-        },
-      })
-
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "path" },
-          { name = "cmdline" },
         },
       })
     end,
@@ -541,7 +514,9 @@ require("lazy").setup({
           theme = "onedark",
         },
         sections = {
-          lualine_c = { { "filename", path = 1 } },
+          lualine_c = {
+            { "filename", path = 1 },
+          },
         },
       })
     end,
