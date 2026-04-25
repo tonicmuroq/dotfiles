@@ -3,7 +3,7 @@
 all: nvim zsh agents git kitty ssh iterm2
 
 nvim:
-	ln -sf $(CURDIR)/nvim ~/.config/nvim
+	ln -sfn $(CURDIR)/nvim ~/.config/nvim
 
 zsh:
 	ln -sf $(CURDIR)/zshrc/antigen ~/.zshrc
@@ -16,10 +16,7 @@ git:
 	ln -sf $(CURDIR)/git/gitignore ~/.gitignore
 
 kitty:
-	mkdir -p ~/.config/kitty
-	ln -sf $(CURDIR)/kitty/kitty.conf ~/.config/kitty/kitty.conf
-	ln -sf $(CURDIR)/kitty/current-theme.conf ~/.config/kitty/current-theme.conf
-	ln -sf $(CURDIR)/kitty/equalize.py ~/.config/kitty/equalize.py
+	ln -sfn $(CURDIR)/kitty ~/.config/kitty
 
 ssh:
 	mkdir -p ~/.ssh
