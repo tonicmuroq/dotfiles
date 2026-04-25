@@ -257,7 +257,6 @@ require("lazy").setup({
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    version = "v1.32.0",
     dependencies = {
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
@@ -334,22 +333,18 @@ require("lazy").setup({
 
       local ensure_installed = vim.tbl_keys(servers or {})
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = ensure_installed,
-        automatic_installation = true,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            vim.lsp.config[server_name] = server
-            vim.lsp.enable(server_name)
-          end,
-        },
       })
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+      for server_name, server in pairs(servers) do
+        server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+        vim.lsp.config(server_name, server)
+      end
     end,
   },
   {
