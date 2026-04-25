@@ -32,3 +32,4 @@ iterm2:
 	defaults write com.googlecode.iterm2 SplitPaneDimmingAmount -float 0.2
 	defaults write com.googlecode.iterm2 TabStyleWithAutomaticOption -int 5
 	defaults write com.googlecode.iterm2 WindowNumber -bool false
+	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "A2EA77C9-57BB-4497-B6C2-DC1E7B761E70"
