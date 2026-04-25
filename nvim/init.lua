@@ -320,6 +320,21 @@ require("lazy").setup({
   {
     "stevearc/conform.nvim",
     lazy = false,
+    dependencies = {
+      {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = { "mason-org/mason.nvim" },
+        opts = {
+          ensure_installed = {
+            "goimports",
+            "gofumpt",
+            "prettier",
+            "prettierd",
+            "ruff",
+          },
+        },
+      },
+    },
     keys = {
       {
         "<leader>w",
