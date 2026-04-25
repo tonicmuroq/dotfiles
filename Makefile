@@ -27,4 +27,11 @@ ssh:
 
 iterm2:
 	mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
-	ln -sf $(CURDIR)/iterm2/tonyseek.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/tonyseek.json
+	ln -sf $(CURDIR)/iterm2/tonic.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/tonic.json
+	defaults write com.googlecode.iterm2 HideTab -bool false
+	defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
+	defaults write com.googlecode.iterm2 ShowFullScreenTabBar -bool false
+	defaults write com.googlecode.iterm2 ShowPaneTitles -bool false
+	defaults write com.googlecode.iterm2 SplitPaneDimmingAmount -float 0.2
+	defaults write com.googlecode.iterm2 TabStyleWithAutomaticOption -int 5
+	defaults write com.googlecode.iterm2 WindowNumber -bool false
