@@ -1,33 +1,30 @@
+# vim: ft=gitconfig
+
 [user]
-    name = tonic
-    email = tonicbupt@gmail.com 
+	name = tonic
+	email = tonicbupt@gmail.com
 
 [alias]
-    st = status
-    rb = svn rebase
-    ci = commit -a
-    co = checkout
-    wtf = "!git commit -m\"$(curl -L -s https://commitlog.wolege.ca/)"\"
+	st = status
+	co = checkout
+	wtf = "!git commit -m\"$(curl -L -s https://commitlog.wolege.ca/)"\"
 
 [pager]
-    diff =
+	diff =
 	branch = false
 
 [core]
 	editor = nvim
-	excludesfile = /Users/tonic/.gitignore
+	excludesfile = ~/.gitignore
 
 [help]
 	autocorrect = 1
 
 [color]
-    ui = true
-
-#[http]
-#	proxy = 10.8.0.1:8118
+	ui = true
 
 [push]
 	default = current
 
-[http]
-	sslVerify = true
+[include]
+	path = ~/.gitconfig.local

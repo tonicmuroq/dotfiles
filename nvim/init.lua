@@ -422,7 +422,6 @@ require("lazy").setup({
           format = lspkind.cmp_format({
             mode = "symbol_text",
             max_width = 200,
-            symbol_map = { Copilot = "" },
           }),
         },
         window = {
@@ -599,13 +598,6 @@ require("lazy").setup({
           },
         },
 
-      })
-      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-        callback = function()
-          vim.schedule(function()
-            pcall(nvim_bufferline)
-          end)
-        end,
       })
     end,
   },
