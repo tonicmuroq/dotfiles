@@ -412,13 +412,6 @@ require("lazy").setup({
           },
         },
       })
-
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "buffer" },
-        },
-      })
     end,
   },
   {
@@ -576,7 +569,13 @@ require("lazy").setup({
             italic = false,
           },
         },
-
+      })
+      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
       })
     end,
   },
