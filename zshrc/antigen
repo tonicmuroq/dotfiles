@@ -32,7 +32,7 @@ antigen apply
 # env setup
 [ -f "$HOME/.extra.zsh" ] && source "$HOME/.extra.zsh"
 
-export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
 
 export GOPATH="$HOME/.go"
 export PATH="$PATH:$GOPATH/bin"
