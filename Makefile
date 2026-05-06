@@ -21,6 +21,7 @@ kitty:
 ssh:
 	mkdir -p ~/.ssh
 	ln -sf $(CURDIR)/ssh/config ~/.ssh/config
+	ln -sf $(CURDIR)/ssh/allowed_signers ~/.ssh/allowed_signers
 
 iterm2:
 	mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
