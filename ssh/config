@@ -1,5 +1,12 @@
 # vim: ft=sshconfig
 
+# Host github.com
+#     HostName ssh.github.com
+#     Port 443
+#     User git
+#     HostKeyAlias github.com
+#     ProxyCommand /usr/bin/nc -X connect -x 127.0.0.1:6152 %h %p
+
 Host *
     ServerAliveInterval 30
     AddKeysToAgent yes
