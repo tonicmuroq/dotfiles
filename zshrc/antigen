@@ -38,7 +38,9 @@ export GOPATH="$HOME/.go"
 export PATH="$PATH:$GOPATH/bin"
 
 export CARGOPATH="$HOME/.cargo"
-export PATH="$PATH:$CARGOPATH/bin:"
+export PATH="$PATH:$CARGOPATH/bin"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
