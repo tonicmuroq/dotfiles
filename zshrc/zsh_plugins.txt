@@ -1,0 +1,17 @@
+# oh-my-zsh core library (equivalent of `antigen use oh-my-zsh`)
+ohmyzsh/ohmyzsh path:lib
+
+# oh-my-zsh plugins
+ohmyzsh/ohmyzsh path:plugins/autojump
+ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/golang
+
+zsh-users/zsh-completions path:src kind:fpath
+
+# theme
+denysdovhan/spaceship-prompt kind:fpath
+
+# must stay last
+zsh-users/zsh-syntax-highlighting

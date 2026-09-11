@@ -6,7 +6,9 @@ nvim:
 	ln -sfn $(CURDIR)/nvim ~/.config/nvim
 
 zsh:
-	ln -sf $(CURDIR)/zshrc/antigen ~/.zshrc
+	ln -sf $(CURDIR)/zshrc/antidote ~/.zshrc
+	mkdir -p ~/.config/zsh
+	ln -sf $(CURDIR)/zshrc/zsh_plugins.txt ~/.config/zsh/zsh_plugins.txt
 
 agents:
 	ln -sf $(CURDIR)/agents/statusline-command.sh ~/.claude/statusline-command.sh

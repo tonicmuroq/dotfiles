@@ -1,0 +1,76 @@
+# vim: ft=zsh
+# setup homebrew env
+
+[ -f "/opt/homebrew/bin/brew" ] && BREW="/opt/homebrew/bin/brew"
+[ -f "/usr/local/bin/brew" ] && BREW="/usr/local/bin/brew"
+
+[ -z "$HOMEBREW_PREFIX" ] && HOMEBREW_PREFIX="$($BREW --prefix)"
+
+# oh-my-zsh vars
+CASE_SENSITIVE="true"
+
+# theme config
+SPACESHIP_PROMPT_ASYNC="true"
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  package       # Package version
+  golang        # Go section
+  venv          # virtualenv section
+  line_sep      # Line break
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+ZSH_CONFIG_DIR="$HOME/.config/zsh"
+ZSH_STATE_DIR="$HOME/.cache/zsh"
+
+# antidote clones with owner/repo dirs, so $ZSH can be predicted before loading
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+export ANTIDOTE_HOME="$HOME/.local/share/antidote"
+export ZSH="$ANTIDOTE_HOME/ohmyzsh/ohmyzsh"
+export ZSH_CACHE_DIR="$ZSH_STATE_DIR/ohmyzsh"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+
+source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
+
+# omz plugins call compdef while sourcing, but compinit has to run after they
+# extend fpath -- queue the calls and replay them once compinit is up
+typeset -ga deferred_compdefs
+compdef() { deferred_compdefs+=("$*") }
+
+# regenerate the static bundle file by hand so it lands in the cache dir
+# instead of next to the manifest, which `antidote load` would do
+if [[ ! "$ZSH_STATE_DIR/zsh_plugins.zsh" -nt "$ZSH_CONFIG_DIR/zsh_plugins.txt" ]]; then
+  antidote bundle <"$ZSH_CONFIG_DIR/zsh_plugins.txt" >"$ZSH_STATE_DIR/zsh_plugins.zsh"
+fi
+source "$ZSH_STATE_DIR/zsh_plugins.zsh"
+
+autoload -Uz compinit && compinit -d "$ZSH_STATE_DIR/zcompdump"
+for cdef in $deferred_compdefs; do compdef ${=cdef}; done
+unset deferred_compdefs cdef
+
+autoload -Uz promptinit && promptinit && prompt spaceship
+
+# env setup
+[ -f "$HOME/.extra.zsh" ] && source "$HOME/.extra.zsh"
+
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOPATH/bin"
+
+export CARGOPATH="$HOME/.cargo"
+export PATH="$PATH:$CARGOPATH/bin"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$($HOMEBREW_PREFIX/bin/pyenv init --path)"
+
+# direnv setup
+eval "$(direnv hook zsh)"
