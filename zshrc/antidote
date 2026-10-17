@@ -6,6 +6,8 @@
 
 [ -z "$HOMEBREW_PREFIX" ] && HOMEBREW_PREFIX="$($BREW --prefix)"
 
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
+
 # oh-my-zsh vars
 CASE_SENSITIVE="true"
 
