@@ -69,10 +69,5 @@ export PATH="$PATH:$CARGOPATH/bin"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# pyenv setup
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$($HOMEBREW_PREFIX/bin/pyenv init --path)"
-
 # direnv setup
 eval "$(direnv hook zsh)"
