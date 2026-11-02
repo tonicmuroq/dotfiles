@@ -1,9 +1,13 @@
-.PHONY: all nvim zsh agents git kitty ssh iterm2
+.PHONY: all nvim tmux zsh agents git kitty ssh iterm2
 
-all: nvim zsh agents git kitty ssh iterm2
+all: nvim tmux zsh agents git kitty ssh iterm2
 
 nvim:
 	ln -sfn $(CURDIR)/nvim ~/.config/nvim
+
+tmux:
+	mkdir -p ~/.config
+	ln -sfn $(CURDIR)/tmux ~/.config/tmux
 
 zsh:
 	ln -sf $(CURDIR)/zshrc/antidote ~/.zshrc
