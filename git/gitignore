@@ -18,3 +18,4 @@ venv
 .pytest_cache
 .claude
 .ruff_cache
+.metrics
