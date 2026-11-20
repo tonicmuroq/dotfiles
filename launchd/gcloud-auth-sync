@@ -1,0 +1,2 @@
+#!/bin/sh
+cd "$HOME/.config/gcloud" && exec rsync -a -e 'ssh -o BatchMode=yes -o ConnectTimeout=5' credentials.db access_tokens.db legacy_credentials application_default_credentials.json macmini.local:.config/gcloud/

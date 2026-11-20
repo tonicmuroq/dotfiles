@@ -2,13 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>Label</key><string>local.gcloud-sync</string>
+  <key>Label</key><string>local.gcloud-auth-sync</string>
   <key>ProgramArguments</key>
-  <array>
-    <string>/bin/sh</string>
-    <string>-c</string>
-    <string>cd $HOME/.config/gcloud &amp;&amp; rsync -a -e 'ssh -o BatchMode=yes -o ConnectTimeout=5' credentials.db access_tokens.db legacy_credentials application_default_credentials.json macmini.local:.config/gcloud/</string>
-  </array>
+  <array><string>@DOTFILES@/launchd/gcloud-auth-sync</string></array>
   <key>WatchPaths</key>
   <array><string>@HOME@/.config/gcloud/credentials.db</string></array>
   <key>StartInterval</key><integer>600</integer>
