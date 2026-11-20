@@ -19,3 +19,5 @@ venv
 .claude
 .ruff_cache
 .metrics
+
+**/.claude/settings.local.json

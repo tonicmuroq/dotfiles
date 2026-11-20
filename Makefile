@@ -1,4 +1,4 @@
-.PHONY: all nvim tmux zsh agents git kitty ssh iterm2
+.PHONY: all nvim tmux zsh agents git kitty ssh iterm2 gcloud-sync
 
 all: nvim tmux zsh agents git kitty ssh iterm2
 
@@ -40,3 +40,10 @@ iterm2:
 	defaults write com.googlecode.iterm2 TabStyleWithAutomaticOption -int 5
 	defaults write com.googlecode.iterm2 WindowNumber -bool false
 	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "A2EA77C9-57BB-4497-B6C2-DC1E7B761E70"
+
+# MBP only: pushes gcloud login to macmini.local
+gcloud-sync:
+	mkdir -p ~/Library/LaunchAgents
+	sed 's|@HOME@|$(HOME)|g' $(CURDIR)/launchd/local.gcloud-sync.plist > ~/Library/LaunchAgents/local.gcloud-sync.plist
+	launchctl bootout gui/$$(id -u)/local.gcloud-sync 2>/dev/null || true
+	launchctl bootstrap gui/$$(id -u) ~/Library/LaunchAgents/local.gcloud-sync.plist
