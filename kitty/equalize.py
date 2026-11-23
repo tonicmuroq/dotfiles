@@ -6,6 +6,7 @@ def main(args):
 
 
 from kittens.tui.handler import result_handler
+from kitty.fast_data_types import add_timer, remove_timer
 
 
 def count_leaves(node, axis):
@@ -32,19 +33,33 @@ def equalize(node, axis):
     equalize(node.two, axis)
 
 
-@result_handler(no_ui=True)
-def handle_result(args, answer, target_window_id, boss):
-    tab = boss.active_tab
-    if tab is None:
+def equalize_tab(boss, tab, axis=None):
+    if tab is None or tab not in boss.all_tabs:
         return
-    layout = tab.current_layout
-    root = getattr(layout, 'pairs_root', None)
+    root = getattr(tab.current_layout, 'pairs_root', None)
     if root is None:
         return
-    # 'h' for hsplit, 'v' for vsplit, default: both axes
-    if len(args) > 1 and args[1] in ('h', 'v'):
-        equalize(root, args[1] == 'v')
-    else:
-        equalize(root, True)
-        equalize(root, False)
+    for a in (True, False) if axis is None else (axis,):
+        equalize(root, a)
     tab.relayout()
+
+
+@result_handler(no_ui=True)
+def handle_result(args, answer, target_window_id, boss):
+    # 'h' for hsplit, 'v' for vsplit, default: both axes
+    axis = {'v': True, 'h': False}.get(args[1]) if len(args) > 1 else None
+    equalize_tab(boss, boss.active_tab, axis)
+
+
+def on_close(boss, window, data):
+    tabref = window.tabref
+
+    # on_close fires while the window is still in the layout, until kitty reaps its process
+    def equalize_once_removed(timer_id):
+        tab = tabref()
+        if tab is not None and window in tab.windows:
+            return
+        remove_timer(timer_id)
+        equalize_tab(boss, tab)
+
+    add_timer(equalize_once_removed, 0.05, True)
