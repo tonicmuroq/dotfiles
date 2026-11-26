@@ -316,10 +316,41 @@ require("lazy").setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+      -- TypeScript 7 is native and ships no tsserver.js, so ts_ls can't use it; run its own `tsc --lsp` instead
+      local function uses_native_tsc(bufnr)
+        local root = vim.fs.root(bufnr, "node_modules")
+        local pkg = root and vim.fs.joinpath(root, "node_modules/typescript/package.json")
+        if not pkg or vim.fn.filereadable(pkg) == 0 then
+          return false
+        end
+        local version = vim.version.parse(vim.json.decode(table.concat(vim.fn.readfile(pkg), "\n")).version)
+        return version ~= nil and version.major >= 7
+      end
+
+      local ts_ls_root = vim.lsp.config.ts_ls.root_dir
+      servers.ts_ls.root_dir = function(bufnr, on_dir)
+        if not uses_native_tsc(bufnr) and ts_ls_root then
+          ts_ls_root(bufnr, on_dir)
+        end
+      end
+
       for server_name, server in pairs(servers) do
         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
         vim.lsp.config(server_name, server)
       end
+
+      -- cmd and root_dir share a binary cache, so both must come from the same load of the config
+      local tsc = assert(vim.lsp.config.tsc)
+      vim.lsp.config("tsc", {
+        capabilities = capabilities,
+        cmd = tsc.cmd,
+        root_dir = function(bufnr, on_dir)
+          if uses_native_tsc(bufnr) then
+            tsc.root_dir(bufnr, on_dir)
+          end
+        end,
+      })
+      vim.lsp.enable("tsc")
     end,
   },
   {
